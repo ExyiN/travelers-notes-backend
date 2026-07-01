@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Region {
+  id Int @id @default(autoincrement())
+  nameFr String
+  nameEn String
+  locations Location[]
+  @@unique([nameFr, nameEn])
+}
+
+model Location {
+  id Int @id @default(autoincrement())
+  nameFr String
+  nameEn String
+  region Region? @relation(fields: [regionId], references: [id])
+  regionId Int?
+  notes Note[]
+  @@unique([nameFr, nameEn])
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  email String @unique
+  password String
+  username String
+  refreshToken String?
+  notes Note[]
+}
+
+model Note {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  locations Location[]
+  comment String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int
+}
