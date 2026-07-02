@@ -1,0 +1,24 @@
+[
+  {
+    "nameFr": "Grands-Pics",
+    "nameEn": "Crestlands",
+    "locations": [
+      {
+        "nameFr": "Flamme-de-Clergé",
+        "nameEn": "Flamechurch",
+        "level": null
+      }
+    ]
+  },
+  {
+    "nameFr": "Belleramée",
+    "nameEn": "Leaflands",
+    "locations": [
+      {
+        "nameFr": "Boisseaux-Vallon",
+        "nameEn": "Cropdale",
+        "level": null
+      }
+    ]
+  }
+]

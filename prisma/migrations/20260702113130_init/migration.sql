@@ -12,6 +12,7 @@ CREATE TABLE "Location" (
     "id" SERIAL NOT NULL,
     "nameFr" TEXT NOT NULL,
     "nameEn" TEXT NOT NULL,
+    "level" TEXT,
     "regionId" INTEGER,
 
     CONSTRAINT "Location_pkey" PRIMARY KEY ("id")

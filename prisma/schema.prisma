@@ -25,6 +25,7 @@ model Location {
   id Int @id @default(autoincrement())
   nameFr String
   nameEn String
+  level String?
   region Region? @relation(fields: [regionId], references: [id])
   regionId Int?
   notes Note[]
