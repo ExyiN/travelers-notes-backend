@@ -49,7 +49,11 @@ async function main() {
           nameFr: locationData.nameFr,
           nameEn: locationData.nameEn,
           level: locationData.level,
-          regionId: region.id,
+          region: {
+            connect: {
+              id: region.id,
+            },
+          },
         },
       });
     }
