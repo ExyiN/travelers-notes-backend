@@ -4,6 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { Note } from 'src/generated/prisma/client';
+import { NoteWhereInput } from 'src/generated/prisma/models';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateNoteDto } from './dto/create-note.dto';
 import { UpdateNoteDto } from './dto/update-note.dto';
@@ -15,6 +16,32 @@ export class NotesService {
   async getUserNotes(userId: number) {
     return this.prisma.note.findMany({
       where: { userId },
+      orderBy: { updatedAt: 'desc' },
+      include: {
+        locations: true,
+      },
+    });
+  }
+
+  async getFilteredUserNotes(
+    userId: number,
+    comment?: string,
+    locationIds?: number[],
+  ) {
+    const and: NoteWhereInput[] = [{ userId }];
+    if (comment) {
+      and.push({ comment: { contains: comment } });
+    }
+    if (locationIds) {
+      locationIds.forEach((id) => {
+        and.push({ locations: { some: { id } } });
+      });
+    }
+    return this.prisma.note.findMany({
+      where: {
+        AND: and,
+      },
+      orderBy: { updatedAt: 'desc' },
       include: {
         locations: true,
       },

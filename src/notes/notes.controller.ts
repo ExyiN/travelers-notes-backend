@@ -4,9 +4,11 @@ import {
   Delete,
   Get,
   Param,
+  ParseArrayPipe,
   ParseIntPipe,
   Patch,
   Post,
+  Query,
   Req,
   UseGuards,
 } from '@nestjs/common';
@@ -22,9 +24,21 @@ export class NotesController {
   constructor(private readonly notesService: NotesService) {}
 
   @Get()
-  async getUserNotes(@Req() req: Request) {
+  async getUserNotes(
+    @Req() req: Request,
+    @Query('comment') comment?: string,
+    @Query('locationIds', new ParseArrayPipe({ items: Number, optional: true }))
+    locationIds?: number[],
+  ) {
     const user = req.user as { sub: number; email: string };
-    return this.notesService.getUserNotes(user.sub);
+    if (!comment && !locationIds) {
+      return this.notesService.getUserNotes(user.sub);
+    }
+    return this.notesService.getFilteredUserNotes(
+      user.sub,
+      comment,
+      locationIds,
+    );
   }
 
   @Post()
