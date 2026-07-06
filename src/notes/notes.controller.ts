@@ -29,6 +29,8 @@ export class NotesController {
     @Query('comment') comment?: string,
     @Query('locationIds', new ParseArrayPipe({ items: Number, optional: true }))
     locationIds?: number[],
+    @Query('tagIds', new ParseArrayPipe({ items: Number, optional: true }))
+    tagIds?: number[],
   ) {
     const user = req.user as { sub: number; email: string };
     if (!comment && !locationIds) {
@@ -38,6 +40,7 @@ export class NotesController {
       user.sub,
       comment,
       locationIds,
+      tagIds,
     );
   }
 

@@ -19,6 +19,7 @@ export class NotesService {
       orderBy: { updatedAt: 'desc' },
       include: {
         locations: true,
+        tags: true,
       },
     });
   }
@@ -27,6 +28,7 @@ export class NotesService {
     userId: number,
     comment?: string,
     locationIds?: number[],
+    tagIds?: number[],
   ): Promise<Note[]> {
     const and: NoteWhereInput[] = [{ userId }];
     if (comment) {
@@ -37,6 +39,11 @@ export class NotesService {
         and.push({ locations: { some: { id } } });
       });
     }
+    if (tagIds) {
+      tagIds.forEach((id) => {
+        and.push({ tags: { some: { id } } });
+      });
+    }
     return this.prisma.note.findMany({
       where: {
         AND: and,
@@ -44,6 +51,7 @@ export class NotesService {
       orderBy: { updatedAt: 'desc' },
       include: {
         locations: true,
+        tags: true,
       },
     });
   }
@@ -63,6 +71,10 @@ export class NotesService {
                 connect: dto.locationIds.map((id) => ({ id })),
               }
             : undefined,
+        tags:
+          dto.tagIds && dto.tagIds.length > 0
+            ? { connect: dto.tagIds.map((id) => ({ id })) }
+            : undefined,
       },
     });
   }
@@ -79,6 +91,9 @@ export class NotesService {
         comment: dto.comment,
         locations: dto.locationIds
           ? { set: dto.locationIds.map((id) => ({ id })) }
+          : undefined,
+        tags: dto.tagIds
+          ? { set: dto.tagIds.map((id) => ({ id })) }
           : undefined,
       },
     });

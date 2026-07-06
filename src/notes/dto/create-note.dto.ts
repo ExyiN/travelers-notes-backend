@@ -7,4 +7,8 @@ export class CreateNoteDto {
   @IsInt({ each: true })
   @IsOptional()
   locationIds: number[];
+  @IsArray()
+  @IsInt({ each: true })
+  @IsOptional()
+  tagIds: number[];
 }
