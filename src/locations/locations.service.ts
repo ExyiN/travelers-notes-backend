@@ -1,50 +1,66 @@
 import { Injectable } from '@nestjs/common';
-import { Location, Prisma } from 'src/generated/prisma/client';
+import { Location } from 'src/generated/prisma/client';
+import { LocationOrderByWithRelationInput } from 'src/generated/prisma/models';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class LocationsService {
+  private orderBy: LocationOrderByWithRelationInput[] = [
+    { region: { nameFr: 'asc' } },
+    { level: { sort: 'asc', nulls: 'first' } },
+  ];
+
   constructor(private prisma: PrismaService) {}
 
-  async location(
-    locationWhereUniqueInput: Prisma.LocationWhereUniqueInput,
-  ): Promise<Location | null> {
-    return this.prisma.location.findUnique({
-      where: locationWhereUniqueInput,
-    });
-  }
-
-  async locations(params: {
-    skip?: number;
-    take?: number;
-    cursor?: Prisma.LocationWhereUniqueInput;
-    where?: Prisma.LocationWhereInput;
-    orderBy?: Prisma.LocationOrderByWithRelationInput;
-  }): Promise<Location[]> {
-    const { skip, take, cursor, where, orderBy } = params;
+  async getLocations(): Promise<Location[]> {
     return this.prisma.location.findMany({
-      skip,
-      take,
-      cursor,
-      where,
-      orderBy,
+      orderBy: this.orderBy,
     });
   }
 
-  async createLocation(data: Prisma.LocationCreateInput): Promise<Location> {
-    return this.prisma.location.create({ data });
-  }
-
-  async updateLocation(
-    where: Prisma.LocationWhereUniqueInput,
-    data: Prisma.LocationUpdateInput,
-  ): Promise<Location> {
-    return this.prisma.location.update({ data, where });
-  }
-
-  async deleteLocation(
-    where: Prisma.LocationWhereUniqueInput,
-  ): Promise<Location> {
-    return this.prisma.location.delete({ where });
+  async getFilteredLocations(search: string): Promise<Location[]> {
+    return this.prisma.location.findMany({
+      where: {
+        OR: [
+          {
+            nameFr: {
+              contains: search,
+              mode: 'insensitive',
+            },
+          },
+          {
+            nameEn: {
+              contains: search,
+              mode: 'insensitive',
+            },
+          },
+          {
+            level: {
+              contains: search,
+              mode: 'insensitive',
+            },
+          },
+          {
+            region: {
+              OR: [
+                {
+                  nameFr: {
+                    contains: search,
+                    mode: 'insensitive',
+                  },
+                },
+                {
+                  nameEn: {
+                    contains: search,
+                    mode: 'insensitive',
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      },
+      orderBy: this.orderBy,
+    });
   }
 }
