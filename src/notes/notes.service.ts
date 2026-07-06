@@ -4,23 +4,27 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { Note } from 'src/generated/prisma/client';
-import { NoteWhereInput } from 'src/generated/prisma/models';
+import {
+  NoteInclude,
+  NoteOrderByWithRelationInput,
+  NoteWhereInput,
+} from 'src/generated/prisma/models';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateNoteDto } from './dto/create-note.dto';
 import { UpdateNoteDto } from './dto/update-note.dto';
 
 @Injectable()
 export class NotesService {
+  private orderBy: NoteOrderByWithRelationInput = { updatedAt: 'desc' };
+  private include: NoteInclude = { locations: true, tags: true };
+
   constructor(private prisma: PrismaService) {}
 
   async getUserNotes(userId: number): Promise<Note[]> {
     return this.prisma.note.findMany({
       where: { userId },
-      orderBy: { updatedAt: 'desc' },
-      include: {
-        locations: true,
-        tags: true,
-      },
+      orderBy: this.orderBy,
+      include: this.include,
     });
   }
 
@@ -48,11 +52,8 @@ export class NotesService {
       where: {
         AND: and,
       },
-      orderBy: { updatedAt: 'desc' },
-      include: {
-        locations: true,
-        tags: true,
-      },
+      orderBy: this.orderBy,
+      include: this.include,
     });
   }
 
