@@ -16,7 +16,10 @@ import { UpdateNoteDto } from './dto/update-note.dto';
 @Injectable()
 export class NotesService {
   private orderBy: NoteOrderByWithRelationInput = { updatedAt: 'desc' };
-  private include: NoteInclude = { locations: true, tags: true };
+  private include: NoteInclude = {
+    locations: { include: { region: true } },
+    tags: true,
+  };
 
   constructor(private prisma: PrismaService) {}
 
