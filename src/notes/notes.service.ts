@@ -13,7 +13,7 @@ import { UpdateNoteDto } from './dto/update-note.dto';
 export class NotesService {
   constructor(private prisma: PrismaService) {}
 
-  async getUserNotes(userId: number) {
+  async getUserNotes(userId: number): Promise<Note[]> {
     return this.prisma.note.findMany({
       where: { userId },
       orderBy: { updatedAt: 'desc' },
@@ -27,7 +27,7 @@ export class NotesService {
     userId: number,
     comment?: string,
     locationIds?: number[],
-  ) {
+  ): Promise<Note[]> {
     const and: NoteWhereInput[] = [{ userId }];
     if (comment) {
       and.push({ comment: { contains: comment } });
