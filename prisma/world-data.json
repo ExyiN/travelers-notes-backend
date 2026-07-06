@@ -1,23 +1,662 @@
 [
   {
-    "nameFr": "Grands-Pics",
-    "nameEn": "Crestlands",
+    "nameFr": "Belleramée",
+    "nameEn": "Leaflands",
     "locations": [
+      { "nameFr": "Boisseaux-Vallon", "nameEn": "Cropdale", "level": null },
+      { "nameFr": "Sentier forestier", "nameEn": "Forest Path", "level": "1" },
       {
-        "nameFr": "Flamme-de-Clergé",
-        "nameEn": "Flamechurch",
+        "nameFr": "Lieu du festival",
+        "nameEn": "Festival Grounds",
         "level": null
+      },
+      { "nameFr": "Sombrefutaie", "nameEn": "The Darkwood", "level": "5" },
+      {
+        "nameFr": "Sentier est de Boisseaux-Vallon",
+        "nameEn": "Eastern Cropdale Trail",
+        "level": "5-8-11"
+      },
+      {
+        "nameFr": "Sentier sud de Boisseaux-Vallon",
+        "nameEn": "Southern Cropdale Trail",
+        "level": "5-8-11"
+      },
+      {
+        "nameFr": "Source stellaire",
+        "nameEn": "Starfall Springs",
+        "level": "15"
+      },
+      { "nameFr": "Sentier animal", "nameEn": "Animal Trail", "level": "16" },
+      {
+        "nameFr": "Sentier nord de Puitseraie",
+        "nameEn": "Northern Wellgrove Trail",
+        "level": "28-34"
+      },
+      {
+        "nameFr": "Autel de la Grâce incarnée",
+        "nameEn": "Altar of the Lady of Grace",
+        "level": null
+      },
+      {
+        "nameFr": "Sentier est de Puitseraie",
+        "nameEn": "Eastern Wellgrove Trail",
+        "level": "28-34"
+      },
+      { "nameFr": "Puitseraie", "nameEn": "Wellgrove", "level": null },
+      {
+        "nameFr": "Forêt obscure",
+        "nameEn": "Forest of Roflano",
+        "level": "26"
+      },
+      {
+        "nameFr": "Chemin vers le Jardin Nourricier",
+        "nameEn": "Path to the Mother's Garden",
+        "level": "30"
+      },
+      {
+        "nameFr": "Jardin Nourricier",
+        "nameEn": "Mother's Garden",
+        "level": "31"
+      },
+      {
+        "nameFr": "Sentier sud de Bois-Bruine",
+        "nameEn": "Southern Timberain Trail",
+        "level": "45"
+      },
+      { "nameFr": "Bois-Bruine", "nameEn": "Timberain", "level": null },
+      {
+        "nameFr": "Château de Bois-Bruine",
+        "nameEn": "Timberain Castle",
+        "level": "45"
+      },
+      {
+        "nameFr": "Résidence de la famille Vérose",
+        "nameEn": "House Wrose",
+        "level": "50"
       }
     ]
   },
   {
-    "nameFr": "Belleramée",
-    "nameEn": "Leaflands",
+    "nameFr": "Grands-Pics",
+    "nameEn": "Crestlands",
+    "locations": [
+      { "nameFr": "Flamme-de-Clergé", "nameEn": "Flamechurch", "level": null },
+      {
+        "nameFr": "Chemin de pèlerinage de Flamme-de-Clergé",
+        "nameEn": "Flamechurch Pilgrims' Way",
+        "level": "1"
+      },
+      {
+        "nameFr": "Cathédrale de Flamme-de-Clergé",
+        "nameEn": "Flamechurch Cathedral",
+        "level": null
+      },
+      {
+        "nameFr": "Sous-sol de la cathédrale",
+        "nameEn": "Sacred Catacombs",
+        "level": "5"
+      },
+      {
+        "nameFr": "Sentier est de Flamme-de-Clergé",
+        "nameEn": "Eastern Flamechurch Pass",
+        "level": "5-8-11"
+      },
+      {
+        "nameFr": "Cataracte frontalière",
+        "nameEn": "Borderfall",
+        "level": "14-22-28-33"
+      },
+      {
+        "nameFr": "Autel du porte-flamme",
+        "nameEn": "Altar of the Flamebringer",
+        "level": null
+      },
+      {
+        "nameFr": "Trône de l'esprit ondin",
+        "nameEn": "Seat of the Water Scion",
+        "level": "26"
+      },
+      {
+        "nameFr": "Sentier ouest de Butte-aux-sages",
+        "nameEn": "Western Montwise Pass",
+        "level": "14-22-28-33"
+      },
+      { "nameFr": "Butte-aux-sages", "nameEn": "Montwise", "level": null },
+      { "nameFr": "Chemin désolé", "nameEn": "Desolate Road", "level": "30" },
+      {
+        "nameFr": "Église abandonnée",
+        "nameEn": "Abandoned Church",
+        "level": "31"
+      },
+      {
+        "nameFr": "Laboratoire souterrain",
+        "nameEn": "Frigid Laboratory",
+        "level": "36"
+      },
+      {
+        "nameFr": "Sentier nord de Butte-aux-sages",
+        "nameEn": "Northern Montwise Pass",
+        "level": "36"
+      },
+      { "nameFr": "Tombeau anonyme", "nameEn": "Nameless Tomb", "level": "40" },
+      {
+        "nameFr": "Col ouest de Belcollines",
+        "nameEn": "Western Merry Hills Pass",
+        "level": "45"
+      },
+      { "nameFr": "Belcollines", "nameEn": "Merry Hills", "level": null },
+      {
+        "nameFr": "Temple d'Ul Stera",
+        "nameEn": "Shrine of Ul Stera",
+        "level": "45"
+      }
+    ]
+  },
+  {
+    "nameFr": "Hinoeuma",
+    "nameEn": "Hinoeuma",
+    "locations": [
+      { "nameFr": "Village-relais de Ryü", "nameEn": "Ryu", "level": null },
+      {
+        "nameFr": "Désert nord de Ryü",
+        "nameEn": "North Ryu Sands",
+        "level": "8-5-8-11"
+      },
+      {
+        "nameFr": "Désert est de Saï",
+        "nameEn": "Eastern Sai Sands",
+        "level": "28-34"
+      },
+      {
+        "nameFr": "Désert sud de Saï",
+        "nameEn": "Southern Sai Sands",
+        "level": "28-34"
+      },
+      { "nameFr": "Saï", "nameEn": "Sai", "level": null },
+      {
+        "nameFr": "Chemin ensablé",
+        "nameEn": "Sand-Swept Path",
+        "level": "16"
+      },
+      {
+        "nameFr": "Restes de bivouac",
+        "nameEn": "Decayed Bandits' Camp",
+        "level": "16"
+      },
+      {
+        "nameFr": "Tanière du sabrillon",
+        "nameEn": "Sandstone Citadel",
+        "level": "17"
+      },
+      {
+        "nameFr": "Tertre du Dragon lunaire",
+        "nameEn": "Crypt of the Unspoken",
+        "level": "34"
+      },
+      {
+        "nameFr": "Désert ouest de Saï",
+        "nameEn": "Western Sai Sands",
+        "level": "28-34"
+      },
+      {
+        "nameFr": "Autel de la lame foudroyante",
+        "nameEn": "Altar of the Thunderblade",
+        "level": null
+      },
+      {
+        "nameFr": "Prison ensablée",
+        "nameEn": "Quicksand Gaol",
+        "level": "30"
+      },
+      { "nameFr": "Temple en ruine", "nameEn": "Sunken Ruin", "level": "40" },
+      {
+        "nameFr": "Désert est de Koù",
+        "nameEn": "Eastern Ku Sands",
+        "level": "45"
+      },
+      {
+        "nameFr": "Site de bataille / Désert sud de Koù",
+        "nameEn": "Battlefield / Southern Ku Sands",
+        "level": "1 / 45"
+      },
+      { "nameFr": "Grotte paisible", "nameEn": "Quiet Cave", "level": "45" },
+      { "nameFr": "Royaume de Koù", "nameEn": "Ku", "level": null },
+      { "nameFr": "Pagode", "nameEn": "Five-Tiered Tower", "level": null }
+    ]
+  },
+  {
+    "nameFr": "Landes-de-neige",
+    "nameEn": "Winterlands",
+    "locations": [
+      { "nameFr": "Île du Bagne", "nameEn": "Frigit Isle", "level": null },
+      {
+        "nameFr": "Passage souterrain de la prison",
+        "nameEn": "Underground Lab",
+        "level": "2"
+      },
+      { "nameFr": "Entrée du Bagne", "nameEn": "Prison Gates", "level": "2-7" },
+      {
+        "nameFr": "Quai de l'île du Bagne",
+        "nameEn": "Frigit Isle Anchorage",
+        "level": "2-7"
+      },
+      { "nameFr": "Cap-Froid", "nameEn": "Coldcape", "level": null },
+      {
+        "nameFr": "Friches sud de Cap-Froid",
+        "nameEn": "Southern Coldcape Snows",
+        "level": "5-8-11"
+      },
+      {
+        "nameFr": "Friches est de Cap-Froid",
+        "nameEn": "Eastern Coldcape Snows",
+        "level": "5-8-11"
+      },
+      {
+        "nameFr": "Autel du roi érudit",
+        "nameEn": "Altar of the Scholar",
+        "level": null
+      },
+      {
+        "nameFr": "Repaire des truands",
+        "nameEn": "Rufus's Hideout",
+        "level": "14"
+      },
+      {
+        "nameFr": "Friches ouest de Gelanthèse",
+        "nameEn": "Western Winterbloom Snows",
+        "level": "16-22-28-34"
+      },
+      {
+        "nameFr": "Repaire des Lièvres des Neiges",
+        "nameEn": "Snow Hare Hideout",
+        "level": "16"
+      },
+      { "nameFr": "Gelanthèse", "nameEn": "Winterbloom", "level": null },
+      {
+        "nameFr": "Friches sud d'Ouragrêle",
+        "nameEn": "Southern Stormhail Snows",
+        "level": "37"
+      },
+      { "nameFr": "Ouragrêle", "nameEn": "Stormhail", "level": null },
+      {
+        "nameFr": "Sanctuaire interdit",
+        "nameEn": "Forbidden Shrine",
+        "level": "37"
+      },
+      {
+        "nameFr": "Saint-Pic d'Altahé",
+        "nameEn": "Sacred Peak of Altahe",
+        "level": "37"
+      },
+      {
+        "nameFr": "Château des Mei d'Ouragrêle",
+        "nameEn": "House Mei Castle",
+        "level": null
+      },
+      {
+        "nameFr": "Tour est du château des Mei",
+        "nameEn": "House Mei Eastern Tower",
+        "level": "39"
+      },
+      {
+        "nameFr": "Caverne cloisonnée",
+        "nameEn": "Beneath the Wall",
+        "level": "55"
+      }
+    ]
+  },
+  {
+    "nameFr": "Moultports",
+    "nameEn": "Harborlands",
+    "locations": [
+      { "nameFr": "Canal-Salin", "nameEn": "Canalbrine", "level": null },
+      {
+        "nameFr": "Sentier vers la source d'eau de Canal-Salin",
+        "nameEn": "Path to the Water Source",
+        "level": "1"
+      },
+      {
+        "nameFr": "Source d'eau de Canal-Salin",
+        "nameEn": "Canalbrine Water Source",
+        "level": "5"
+      },
+      {
+        "nameFr": "Côte ouest de Canal-Salin",
+        "nameEn": "Western Canalbrine Coast",
+        "level": "5-8-11"
+      },
+      {
+        "nameFr": "Pont de Canal-Salin",
+        "nameEn": "Canalbrine Bridge",
+        "level": "5-8-11"
+      },
+      {
+        "nameFr": "Vaisseau de l'Ordre Sacré",
+        "nameEn": "Sacred Guard Ship",
+        "level": "14"
+      },
+      {
+        "nameFr": "Repaire de l'usurpateur",
+        "nameEn": "Usurper's Hideout",
+        "level": "16"
+      },
+      {
+        "nameFr": "Caverne du roi des mers",
+        "nameEn": "Sea Cave",
+        "level": "15"
+      },
+      {
+        "nameFr": "Avant-poste principal des gardes",
+        "nameEn": "Guard Outpost",
+        "level": "18"
+      },
+      {
+        "nameFr": "Côte nord de la crique du Belvédère",
+        "nameEn": "Northern Conning Creek Coast",
+        "level": "28-34"
+      },
+      {
+        "nameFr": "Autel du seigneur des remèdes",
+        "nameEn": "Altar of the Charitable Lady",
+        "level": null
+      },
+      {
+        "nameFr": "Crique du Belvédère",
+        "nameEn": "Conning Creek",
+        "level": null
+      },
+      {
+        "nameFr": "Côte ouest de la crique du Belvédère",
+        "nameEn": "Western Conning Creek Coast",
+        "level": "28-34"
+      },
+      {
+        "nameFr": "Caverne de la Lune et du Soleil",
+        "nameEn": "Cavern of the Sun and Moon",
+        "level": "45"
+      },
+      {
+        "nameFr": "Quai de l'île de Roque",
+        "nameEn": "Roque Island Anchorage",
+        "level": "45"
+      },
+      { "nameFr": "Île de Roque", "nameEn": "Roque Island", "level": null },
+      { "nameFr": "Compagnie Roque", "nameEn": "Roque Company", "level": "45" }
+    ]
+  },
+  {
+    "nameFr": "Océan séparé",
+    "nameEn": "The Sundering Sea",
+    "locations": [
+      { "nameFr": "Surface", "nameEn": "Open Sea", "level": "34" },
+      {
+        "nameFr": "Île du phare",
+        "nameEn": "Lighthouse Island",
+        "level": null
+      },
+      {
+        "nameFr": "Île solitaire",
+        "nameEn": "Isle of Monsters",
+        "level": "38"
+      },
+      { "nameFr": "Île perdue", "nameEn": "The Lost Isle", "level": "45" },
+      {
+        "nameFr": "Épave de l'Impératrice",
+        "nameEn": "Shipwreck of the Empress",
+        "level": "48"
+      },
+      { "nameFr": "Nid étrange", "nameEn": "Curious Nest", "level": "52" },
+      { "nameFr": "??? (île)", "nameEn": "??? (Island)", "level": null },
+      { "nameFr": "Vidania", "nameEn": "Vidania", "level": "51" }
+    ]
+  },
+  {
+    "nameFr": "Terres Lumière",
+    "nameEn": "Brightlands",
+    "locations": [
+      { "nameFr": "Néo Delsta", "nameEn": "New Delsta", "level": null },
+      { "nameFr": "Égouts", "nameEn": "Abandoned Waterway", "level": "2" },
+      {
+        "nameFr": "Résidence de Diamante",
+        "nameEn": "Diamante's Estate",
+        "level": "3"
+      },
+      {
+        "nameFr": "Quai de Néo Delsta",
+        "nameEn": "New Delsta Anchorage",
+        "level": "5-8-11"
+      },
+      {
+        "nameFr": "Plaine de Néo Delsta",
+        "nameEn": "New Delsta Flats",
+        "level": "5-8-11"
+      },
+      {
+        "nameFr": "Ruelle est de Néo Delsta",
+        "nameEn": "Eastern New Delsta Highroad",
+        "level": "5-8-11"
+      },
+      {
+        "nameFr": "Ruelle ouest de Chronorive",
+        "nameEn": "Western Clockbank Highroad",
+        "level": "5-8-11"
+      },
+      {
+        "nameFr": "Coulisses du théâtre",
+        "nameEn": "Theater Backstage",
+        "level": "14"
+      },
+      {
+        "nameFr": "Ruelle sud de Chronorive",
+        "nameEn": "Southern Clockbank Highroad",
+        "level": "16-22-28-32"
+      },
+      {
+        "nameFr": "Autel du prince des voleurs",
+        "nameEn": "Altar of the Prince of Thieves",
+        "level": null
+      },
+      { "nameFr": "Chronorive", "nameEn": "Clockbank", "level": null },
+      {
+        "nameFr": "Usine de la compagnie Roque",
+        "nameEn": "Roque Factory",
+        "level": "18"
+      },
+      {
+        "nameFr": "Aqueduc abandonné",
+        "nameEn": "Whistling Cavern",
+        "level": "20"
+      },
+      {
+        "nameFr": "Village abandonné",
+        "nameEn": "Abandoned Village",
+        "level": null
+      },
+      {
+        "nameFr": "Chemin vers le mont Lyfia",
+        "nameEn": "Path to Mount Lyfia",
+        "level": "30"
+      },
+      { "nameFr": "Mont Lyfia", "nameEn": "Mount Lyfia", "level": "31" },
+      {
+        "nameFr": "Malédiction des marins",
+        "nameEn": "Sunken Vessel",
+        "level": "34"
+      },
+      {
+        "nameFr": "Ancienne tour de l'horloge",
+        "nameEn": "Old Clock Tower",
+        "level": "44"
+      },
+      {
+        "nameFr": "Ruelle déserte",
+        "nameEn": "Deserted Highroad",
+        "level": "45"
+      },
+      { "nameFr": "Akène", "nameEn": "Lostseed", "level": null },
+      {
+        "nameFr": "Château d'Akène",
+        "nameEn": "Lostseed Castle",
+        "level": "45"
+      }
+    ]
+  },
+  {
+    "nameFr": "Terres Sauvages",
+    "nameEn": "Wildlands",
+    "locations": [
+      { "nameFr": "Larue-et-Verlors", "nameEn": "Oresrush", "level": null },
+      {
+        "nameFr": "Ruines de la mine d'argent",
+        "nameEn": "Abandoned Silver Mine",
+        "level": "2"
+      },
+      {
+        "nameFr": "Résidence de Guiff",
+        "nameEn": "Giff's Manse",
+        "level": "5"
+      },
+      {
+        "nameFr": "Allée sud de Larue-et-Verlors",
+        "nameEn": "Southern Oresrush Road",
+        "level": "5-8-11"
+      },
+      {
+        "nameFr": "Quai de Crevasstrie",
+        "nameEn": "Crackridge Anchorage",
+        "level": "5-8-11"
+      },
+      {
+        "nameFr": "Allée sud de Crevasstrie",
+        "nameEn": "Southern Crackridge Road",
+        "level": "20-28-34"
+      },
+      {
+        "nameFr": "Allée ouest de Crevasstrie",
+        "nameEn": "Wildlands Road",
+        "level": "20-28-34"
+      },
+      {
+        "nameFr": "Autel du marchand émérite",
+        "nameEn": "Altar of the Trader",
+        "level": null
+      },
+      { "nameFr": "Crevasstrie", "nameEn": "Crackridge", "level": null },
+      {
+        "nameFr": "Chemin à l'abandon",
+        "nameEn": "Abandoned Track",
+        "level": "23"
+      },
+      {
+        "nameFr": "Ruines du Crépuscule",
+        "nameEn": "Fallen Ruins",
+        "level": "24"
+      },
+      {
+        "nameFr": "Repos de la nature",
+        "nameEn": "The Unsettled Wood",
+        "level": "29"
+      },
+      {
+        "nameFr": "Tunnel inachevé",
+        "nameEn": "Unfinished Tunnel",
+        "level": "34"
+      },
+      {
+        "nameFr": "Allée ouest de Graveil",
+        "nameEn": "Western Gravell Road",
+        "level": "45"
+      },
+      { "nameFr": "Graveil", "nameEn": "Gravell", "level": null },
+      {
+        "nameFr": "Chemin vers le sanctuaire du Crépuscule",
+        "nameEn": "Path to the Duskwood Shrine",
+        "level": "45"
+      },
+      {
+        "nameFr": "Sanctuaire du Crépuscule",
+        "nameEn": "Duskwood Shrine",
+        "level": "45"
+      },
+      { "nameFr": "Blanc-Val", "nameEn": "Sunshade", "level": "50" }
+    ]
+  },
+  {
+    "nameFr": "Toto Haha",
+    "nameEn": "Toto'haha",
     "locations": [
       {
-        "nameFr": "Boisseaux-Vallon",
-        "nameEn": "Cropdale",
+        "nameFr": "Village de Kénomo",
+        "nameEn": "Beastling Village",
         "level": null
+      },
+      {
+        "nameFr": "Chemin vers la Sépulture des maîtres",
+        "nameEn": "Path to the Warden's Tombs",
+        "level": "1"
+      },
+      {
+        "nameFr": "Sépulture des maîtres",
+        "nameEn": "Tombs of the Warden",
+        "level": "5"
+      },
+      {
+        "nameFr": "Vieille laie nord de Kénomo",
+        "nameEn": "Northern Kenomo Traverse",
+        "level": "5-8-11"
+      },
+      {
+        "nameFr": "Quai de Kénomo",
+        "nameEn": "Kenomo Anchorage",
+        "level": "5-8-11"
+      },
+      {
+        "nameFr": "Vieille laie est de Tropp Hopp",
+        "nameEn": "Eastern Tropu'hopu Traverse",
+        "level": "16-22-28-32"
+      },
+      {
+        "nameFr": "Autel de la chasseresse",
+        "nameEn": "Altar of the Huntress",
+        "level": null
+      },
+      { "nameFr": "Tropp Hopp", "nameEn": "Tropu'hopu", "level": null },
+      {
+        "nameFr": "Vieille laie sud du Village sans nom",
+        "nameEn": "Southern Nameless Village Traverse",
+        "level": "45"
+      },
+      {
+        "nameFr": "Ruines submergées",
+        "nameEn": "Sunken Ruins",
+        "level": "46"
+      },
+      {
+        "nameFr": "Village sans nom",
+        "nameEn": "Nameless Village",
+        "level": null
+      },
+      {
+        "nameFr": "Forêt de la perdition",
+        "nameEn": "Infernal Wood",
+        "level": "45"
+      },
+      {
+        "nameFr": "Tertre de la victoire",
+        "nameEn": "Altar of Victory",
+        "level": "45"
+      },
+      {
+        "nameFr": "Forêt d'émeraude",
+        "nameEn": "Emerald Forest",
+        "level": "45"
+      },
+      { "nameFr": "Cap tumultueux", "nameEn": "Stormy Cape", "level": "45" },
+      { "nameFr": "Falaise-de-lune", "nameEn": "Mooncliff", "level": null },
+      {
+        "nameFr": "Grotte du clapotis",
+        "nameEn": "Oceanic Cavern",
+        "level": "48"
       }
     ]
   }
