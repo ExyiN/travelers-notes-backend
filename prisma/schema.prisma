@@ -39,6 +39,7 @@ model User {
   username String
   refreshToken String?
   notes Note[]
+  tags Tag[]
 }
 
 model Note {
@@ -47,6 +48,16 @@ model Note {
   updatedAt DateTime @updatedAt
   locations Location[]
   comment String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int
+  tags Tag[]
+}
+
+model Tag {
+  id Int @id @default(autoincrement())
+  name String
+  color String?
+  notes Note[]
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId Int
 }

@@ -15,6 +15,7 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import cookieParser from 'cookie-parser';
 import { APP_PIPE } from '@nestjs/core';
+import { TagsModule } from './tags/tags.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { APP_PIPE } from '@nestjs/core';
     RegionsModule,
     UsersModule,
     AuthModule,
+    TagsModule,
   ],
   controllers: [AppController],
   providers: [
