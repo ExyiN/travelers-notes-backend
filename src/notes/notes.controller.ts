@@ -33,7 +33,7 @@ export class NotesController {
     tagIds?: number[],
   ) {
     const user = req.user as { sub: number; email: string };
-    if (!comment && !locationIds) {
+    if (!comment && !locationIds && !tagIds) {
       return this.notesService.getUserNotes(user.sub);
     }
     return this.notesService.getFilteredUserNotes(
