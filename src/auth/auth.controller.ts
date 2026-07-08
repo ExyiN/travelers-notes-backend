@@ -16,6 +16,8 @@ import { LocalAuthGuard } from './guards/local-auth.guard';
 import { User } from 'src/generated/prisma/client';
 import { AccessJwtAuthGuard } from './guards/access-jwt-auth.guard';
 import { RefreshJwtAuthGuard } from './guards/refresh-jwt-auth.guard';
+import { Serialize } from 'src/interceptors/serialize/serialize.interceptor';
+import { UserDto } from './dto/user.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -62,6 +64,7 @@ export class AuthController {
   }
 
   @UseGuards(AccessJwtAuthGuard)
+  @Serialize(UserDto)
   @Get('me')
   getMe(@Req() req: Request) {
     const user = req.user as { sub: number; email: string };

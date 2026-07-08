@@ -38,6 +38,8 @@ model User {
   password String
   username String
   refreshToken String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   notes Note[]
   tags Tag[]
 }
