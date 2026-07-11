@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
+import * as bcrypt from 'bcrypt';
 import { UserSession } from 'src/generated/prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
-import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserSessionsService {
@@ -31,10 +31,15 @@ export class UserSessionsService {
     return session;
   }
 
-  async createUserSession(token: string, userId: number): Promise<UserSession> {
+  async createUserSession(
+    token: string,
+    expiresAt: Date,
+    userId: number,
+  ): Promise<UserSession> {
     return this.prisma.userSession.create({
       data: {
         token,
+        expiresAt,
         user: {
           connect: {
             id: userId,
@@ -44,13 +49,18 @@ export class UserSessionsService {
     });
   }
 
-  async updateUserSession(id: number, token: string): Promise<UserSession> {
+  async updateUserSession(
+    id: number,
+    expiresAt: Date,
+    token: string,
+  ): Promise<UserSession> {
     return this.prisma.userSession.update({
       where: {
         id,
       },
       data: {
         token,
+        expiresAt,
       },
     });
   }

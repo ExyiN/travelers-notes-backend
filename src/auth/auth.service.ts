@@ -6,6 +6,7 @@ import {
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
+import ms from 'ms';
 import { JwtTokens } from 'src/types/jwt-tokens.type';
 import { UserSessionsService } from 'src/user-sessions/user-sessions.service';
 import { UsersService } from 'src/users/users.service';
@@ -53,11 +54,11 @@ export class AuthService {
     const [accessToken, refreshToken] = await Promise.all([
       this.jwtService.signAsync(payload, {
         secret: this.config.get('AT_SECRET'),
-        expiresIn: '15m',
+        expiresIn: this.config.get('AT_EXPIRES_IN'),
       }),
       this.jwtService.signAsync(payload, {
         secret: this.config.get('RT_SECRET'),
-        expiresIn: '7d',
+        expiresIn: this.config.get('RT_EXPIRES_IN'),
       }),
     ]);
     return {
@@ -85,13 +86,17 @@ export class AuthService {
   private async createUserSession(id: number, token: string) {
     const salt = await bcrypt.genSalt();
     const hash = await bcrypt.hash(token, salt);
-    await this.userSessionsService.createUserSession(hash, id);
+    const expiresIn = this.config.get<string>('RT_EXPIRES_IN');
+    const expiresAt = new Date(Date.now() + ms(expiresIn as ms.StringValue));
+    await this.userSessionsService.createUserSession(hash, expiresAt, id);
   }
 
   private async updateUserSession(id: number, token: string) {
     const salt = await bcrypt.genSalt();
     const hash = await bcrypt.hash(token, salt);
-    await this.userSessionsService.updateUserSession(id, hash);
+    const expiresIn = this.config.get<string>('RT_EXPIRES_IN');
+    const expiresAt = new Date(Date.now() + ms(expiresIn as ms.StringValue));
+    await this.userSessionsService.updateUserSession(id, expiresAt, hash);
   }
 
   async logOut(id: number, token: string) {

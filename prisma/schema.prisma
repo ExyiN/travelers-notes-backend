@@ -47,6 +47,7 @@ model User {
 model UserSession {
   id Int @id @default(autoincrement())
   token String
+  expiresAt DateTime
   user User @relation(fields: [userId], references: [id])
   userId Int
 }
