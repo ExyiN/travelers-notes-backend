@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { UserSession } from 'src/generated/prisma/client';
+import { BatchPayload } from 'src/generated/prisma/internal/prismaNamespace';
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
@@ -69,6 +70,17 @@ export class UserSessionsService {
     return this.prisma.userSession.delete({
       where: {
         id,
+      },
+    });
+  }
+
+  async cleanExpiredUserSessions(): Promise<BatchPayload> {
+    const now = new Date();
+    return await this.prisma.userSession.deleteMany({
+      where: {
+        expiresAt: {
+          lt: now,
+        },
       },
     });
   }

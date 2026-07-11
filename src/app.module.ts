@@ -4,23 +4,26 @@ import {
   NestModule,
   ValidationPipe,
 } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { APP_PIPE } from '@nestjs/core';
+import { ScheduleModule } from '@nestjs/schedule';
+import cookieParser from 'cookie-parser';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ConfigModule } from '@nestjs/config';
-import { PrismaModule } from './prisma/prisma.module';
-import { NotesModule } from './notes/notes.module';
-import { LocationsModule } from './locations/locations.module';
-import { RegionsModule } from './regions/regions.module';
-import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
-import cookieParser from 'cookie-parser';
-import { APP_PIPE } from '@nestjs/core';
+import { LocationsModule } from './locations/locations.module';
+import { NotesModule } from './notes/notes.module';
+import { PrismaModule } from './prisma/prisma.module';
+import { RegionsModule } from './regions/regions.module';
+import { TaskService } from './schedule/task/task.service';
 import { TagsModule } from './tags/tags.module';
 import { UserSessionsModule } from './user-sessions/user-sessions.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    ScheduleModule.forRoot(),
     PrismaModule,
     NotesModule,
     LocationsModule,
@@ -34,6 +37,7 @@ import { UserSessionsModule } from './user-sessions/user-sessions.module';
   providers: [
     AppService,
     { provide: APP_PIPE, useValue: new ValidationPipe({ whitelist: true }) },
+    TaskService,
   ],
 })
 export class AppModule implements NestModule {
