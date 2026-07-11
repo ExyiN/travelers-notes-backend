@@ -37,11 +37,18 @@ model User {
   email String @unique
   password String
   username String
-  refreshToken String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   notes Note[]
   tags Tag[]
+  userSessions UserSession[]
+}
+
+model UserSession {
+  id Int @id @default(autoincrement())
+  token String
+  user User @relation(fields: [userId], references: [id])
+  userId Int
 }
 
 model Note {

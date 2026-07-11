@@ -59,8 +59,12 @@ export class AuthController {
     @Res({ passthrough: true }) res: Response,
   ): Promise<void> {
     res.clearCookie('refresh_token');
-    const user = req.user as { sub: number; email: string };
-    return this.authService.logOut(user.sub);
+    const user = req.user as {
+      sub: number;
+      email: string;
+      refreshToken: string;
+    };
+    return this.authService.logOut(user.sub, user.refreshToken);
   }
 
   @UseGuards(AccessJwtAuthGuard)

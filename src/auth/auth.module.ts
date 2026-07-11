@@ -7,9 +7,15 @@ import { AuthService } from './auth.service';
 import { AccessJwtStrategy } from './strategies/access-jwt.strategy';
 import { LocalStrategy } from './strategies/local.strategy';
 import { RefreshJwtStrategy } from './strategies/refresh-jwt.strategy';
+import { UserSessionsModule } from 'src/user-sessions/user-sessions.module';
 
 @Module({
-  imports: [PassportModule, UsersModule, JwtModule.register({})],
+  imports: [
+    PassportModule,
+    UsersModule,
+    UserSessionsModule,
+    JwtModule.register({}),
+  ],
   providers: [
     AuthService,
     LocalStrategy,

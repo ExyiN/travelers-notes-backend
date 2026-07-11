@@ -3,16 +3,18 @@ import {
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
-import { UsersService } from 'src/users/users.service';
+import { ConfigService } from '@nestjs/config';
+import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { JwtTokens } from 'src/types/jwt-tokens.type';
-import { JwtService } from '@nestjs/jwt';
-import { ConfigService } from '@nestjs/config';
+import { UserSessionsService } from 'src/user-sessions/user-sessions.service';
+import { UsersService } from 'src/users/users.service';
 
 @Injectable()
 export class AuthService {
   constructor(
     private usersService: UsersService,
+    private userSessionsService: UserSessionsService,
     private jwtService: JwtService,
     private config: ConfigService,
   ) {}
@@ -36,13 +38,13 @@ export class AuthService {
     });
 
     const tokens = await this.generateTokens(createdUser.id, createdUser.email);
-    await this.updateRefreshToken(createdUser.id, tokens.refresh_token);
+    await this.createUserSession(createdUser.id, tokens.refresh_token);
     return tokens;
   }
 
   async signIn(sub: number, email: string): Promise<JwtTokens> {
     const tokens = await this.generateTokens(sub, email);
-    await this.updateRefreshToken(sub, tokens.refresh_token);
+    await this.createUserSession(sub, tokens.refresh_token);
     return tokens;
   }
 
@@ -66,33 +68,39 @@ export class AuthService {
 
   async refreshTokens(id: number, token: string) {
     const user = await this.usersService.user({ id });
-    if (!user || !user.refreshToken) {
+    if (!user) {
       throw new UnauthorizedException();
     }
-    const isMatch = await bcrypt.compare(token, user.refreshToken);
-    if (!isMatch) {
+    const currentSession =
+      await this.userSessionsService.getUserUserSessionByToken(id, token);
+    if (!currentSession) {
       throw new UnauthorizedException();
     }
     const tokens = await this.generateTokens(user.id, user.email);
-    await this.updateRefreshToken(user.id, tokens.refresh_token);
+    await this.updateUserSession(currentSession.id, tokens.refresh_token);
 
     return tokens;
   }
 
-  private async updateRefreshToken(id: number, token: string) {
+  private async createUserSession(id: number, token: string) {
     const salt = await bcrypt.genSalt();
     const hash = await bcrypt.hash(token, salt);
-    await this.usersService.updateUser({
-      where: { id },
-      data: { refreshToken: hash },
-    });
+    await this.userSessionsService.createUserSession(hash, id);
   }
 
-  async logOut(id: number) {
-    await this.usersService.updateUser({
-      where: { id, refreshToken: { not: null } },
-      data: { refreshToken: null },
-    });
+  private async updateUserSession(id: number, token: string) {
+    const salt = await bcrypt.genSalt();
+    const hash = await bcrypt.hash(token, salt);
+    await this.userSessionsService.updateUserSession(id, hash);
+  }
+
+  async logOut(id: number, token: string) {
+    const currentSession =
+      await this.userSessionsService.getUserUserSessionByToken(id, token);
+    if (!currentSession) {
+      return;
+    }
+    await this.userSessionsService.deleteUserSession(currentSession.id);
   }
 
   async validateUser(email: string, pass: string) {
@@ -100,7 +108,7 @@ export class AuthService {
     if (!user || !(await bcrypt.compare(pass, user.password))) {
       return null;
     }
-    const { password, refreshToken, ...result } = user;
+    const { password, ...result } = user;
     return result;
   }
 
@@ -109,7 +117,7 @@ export class AuthService {
     if (!user) {
       return null;
     }
-    const { password, refreshToken, ...result } = user;
+    const { password, ...result } = user;
     return result;
   }
 }
