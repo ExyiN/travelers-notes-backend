@@ -35,6 +35,7 @@ export class AuthController {
     );
     res.cookie('refresh_token', tokens.refresh_token, {
       httpOnly: true,
+      secure: true,
     });
     return { access_token: tokens.access_token };
   }
@@ -47,6 +48,7 @@ export class AuthController {
     const tokens = await this.authService.signIn(user.id, user.email);
     res.cookie('refresh_token', tokens.refresh_token, {
       httpOnly: true,
+      secure: true,
     });
     return { access_token: tokens.access_token };
   }
@@ -80,6 +82,7 @@ export class AuthController {
     const tokens = await this.authService.refreshTokens(user.sub);
     res.cookie('refresh_token', tokens.refresh_token, {
       httpOnly: true,
+      secure: true,
     });
     return {
       access_token: tokens.access_token,
