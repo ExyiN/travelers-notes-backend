@@ -15,9 +15,7 @@ import { LocationsModule } from './locations/locations.module';
 import { NotesModule } from './notes/notes.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { RegionsModule } from './regions/regions.module';
-import { TaskService } from './schedule/task/task.service';
 import { TagsModule } from './tags/tags.module';
-import { UserSessionsModule } from './user-sessions/user-sessions.module';
 import { UsersModule } from './users/users.module';
 
 @Module({
@@ -31,13 +29,11 @@ import { UsersModule } from './users/users.module';
     UsersModule,
     AuthModule,
     TagsModule,
-    UserSessionsModule,
   ],
   controllers: [AppController],
   providers: [
     AppService,
     { provide: APP_PIPE, useValue: new ValidationPipe({ whitelist: true }) },
-    TaskService,
   ],
 })
 export class AppModule implements NestModule {
