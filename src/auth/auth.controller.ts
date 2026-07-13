@@ -9,7 +9,9 @@ import {
   Res,
   UseGuards,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import type { Request, Response } from 'express';
+import ms from 'ms';
 import { User } from 'src/generated/prisma/client';
 import { Serialize } from 'src/interceptors/serialize/serialize.interceptor';
 import { AuthService } from './auth.service';
@@ -21,7 +23,10 @@ import { RefreshJwtAuthGuard } from './guards/refresh-jwt-auth.guard';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private config: ConfigService,
+  ) {}
 
   @Post('signup')
   async signUp(
@@ -33,9 +38,11 @@ export class AuthController {
       body.password,
       body.username,
     );
+    const cookieMaxAge = ms(this.config.get('RT_EXPIRES_IN') as ms.StringValue);
     res.cookie('refresh_token', tokens.refresh_token, {
       httpOnly: true,
       secure: true,
+      maxAge: cookieMaxAge,
     });
     return { access_token: tokens.access_token };
   }
@@ -46,9 +53,11 @@ export class AuthController {
   async signIn(@Req() req: Request, @Res({ passthrough: true }) res: Response) {
     const user = req.user as Omit<User, 'password' | 'refreshToken'>;
     const tokens = await this.authService.signIn(user.id, user.email);
+    const cookieMaxAge = ms(this.config.get('RT_EXPIRES_IN') as ms.StringValue);
     res.cookie('refresh_token', tokens.refresh_token, {
       httpOnly: true,
       secure: true,
+      maxAge: cookieMaxAge,
     });
     return { access_token: tokens.access_token };
   }
@@ -80,9 +89,11 @@ export class AuthController {
       email: string;
     };
     const tokens = await this.authService.refreshTokens(user.sub);
+    const cookieMaxAge = ms(this.config.get('RT_EXPIRES_IN') as ms.StringValue);
     res.cookie('refresh_token', tokens.refresh_token, {
       httpOnly: true,
       secure: true,
+      maxAge: cookieMaxAge,
     });
     return {
       access_token: tokens.access_token,
